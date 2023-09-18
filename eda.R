@@ -85,17 +85,20 @@ ggplot(data = customer_data, aes(`Annual Income (k$)`)) +
   # simple boxplot
 ggplot(data = customer_data, aes(`Spending Score (1-100)`)) +
   geom_boxplot(fill = "lightblue") +
-  labs(title = "Spending Score Distribution ")
+  labs(title = "Spending Score Distribution ") +
+  theme_minimal()
 
   # histogram displaying Spending Score bins
 ggplot(data = customer_data, aes(`Spending Score (1-100)`)) +
   geom_histogram(binwidth = 13, color = "black", fill = "lightblue") +
   stat_bin(binwidth = 13, geom = "text", color = "black", size = 3, aes(label = ..count..),
            position = position_stack(vjust = .5)) +
+  theme_bw() +
   scale_x_continuous(n.breaks = 10) +
-  theme(legend.position = "top",
-        legend.title = element_blank()) +
+  theme(axis.title.x = element_text(family = "serif"),
+        axis.title.y = element_blank(),
+        plot.title = element_text(family = "serif", size = 20, face = "bold.italic")) +
   labs(title = "Spending Score Distribution",
-       xlab = "Spending Score") +
-  ggthemes::theme_clean()
+       xlab = "Spending Score",
+       ylab = "")
 
